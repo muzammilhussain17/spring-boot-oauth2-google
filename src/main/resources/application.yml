@@ -1,0 +1,24 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 140665862987-v31u7bcp95q0goh8103hsd7q6de5juv0.apps.googleusercontent.com  # Changed placeholder for clarity
+            client-secret: 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 # Changed placeholder for clarity
+            scope:
+              - profile
+              - email
+              - openid # Recommended scope for authentication
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            authorization-grant-type: authorization_code
+            client-name: Google
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
+            issuer-uri: https://accounts.google.com # Added issuer-uri
+server:
+  port: 8080
